@@ -11,7 +11,7 @@
 #include "G4SDManager.hh"
 
 #include "scinthit.hh"
-#include "g4root.hh"
+#include "G4AnalysisManager.hh"
 #include "run.hh"
 #include "construction.hh"
 

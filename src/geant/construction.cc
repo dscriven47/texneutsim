@@ -75,11 +75,11 @@ void MyDetectorConstruction::DefineMaterials()
   // optical properties for NaI scintillator (simple)
   G4MaterialPropertiesTable *mptNaI = new G4MaterialPropertiesTable();
   mptNaI->AddProperty("RINDEX",energy,rindexNaI,2);
-  mptNaI->AddProperty("FASTCOMPONENT",energy,fraction,2);
+  mptNaI->AddProperty("FASTCOMPONENT",energy,fraction,2,true);
   mptNaI->AddConstProperty("SCINTILLATIONYIELD",38000./MeV);
   mptNaI->AddConstProperty("RESOLUTIONSCALE",1.0);
-  mptNaI->AddConstProperty("FASTTIMECONSTANT",250*ns);
-  mptNaI->AddConstProperty("YIELDRATIO",1.);
+  mptNaI->AddConstProperty("FASTTIMECONSTANT",250*ns,true);
+  mptNaI->AddConstProperty("YIELDRATIO",1.,true);
   NaI->SetMaterialPropertiesTable(mptNaI);
 
   // optical properties for the optical coating of NaI
@@ -143,15 +143,15 @@ void MyDetectorConstruction::DefineMaterials()
   G4double pterp_ABSL[]  = { 10.*cm, 10.*cm, 10.*cm};
   assert(sizeof(pterp_ABSL) == sizeof(pterp_Energy));
   G4MaterialPropertiesTable *pTerp_mt = new G4MaterialPropertiesTable();
-  pTerp_mt->AddProperty("FASTCOMPONENT", pterp_Energy, pterp_SCINT, pterpnum);
-  pTerp_mt->AddProperty("SLOWCOMPONENT", pterp_Energy, pterp_SCINT, pterpnum);
+  pTerp_mt->AddProperty("FASTCOMPONENT", pterp_Energy, pterp_SCINT, pterpnum, true);
+  pTerp_mt->AddProperty("SLOWCOMPONENT", pterp_Energy, pterp_SCINT, pterpnum, true);
   pTerp_mt->AddProperty("RINDEX",        pterp_Energy, pterp_RIND,  pterpnum);
   pTerp_mt->AddProperty("ABSLENGTH",     pterp_Energy, pterp_ABSL,  pterpnum);
   pTerp_mt->AddConstProperty("SCINTILLATIONYIELD",0./MeV);
   pTerp_mt->AddConstProperty("RESOLUTIONSCALE",1.0);
-  pTerp_mt->AddConstProperty("FASTTIMECONSTANT",3.3*ns);
-  pTerp_mt->AddConstProperty("SLOWTIMECONSTANT",31.*ns);
-  pTerp_mt->AddConstProperty("YIELDRATIO",1.0);
+  pTerp_mt->AddConstProperty("FASTTIMECONSTANT",3.3*ns, true);
+  pTerp_mt->AddConstProperty("SLOWTIMECONSTANT",31.*ns, true);
+  pTerp_mt->AddConstProperty("YIELDRATIO",1.0, true);
   pTerp->SetMaterialPropertiesTable(pTerp_mt);
   // Set the Birks Constant for the LXe scintillator
   //pTerp->GetIonisation()->SetBirksConstant(0.126*mm/MeV);

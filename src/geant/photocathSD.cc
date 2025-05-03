@@ -2,7 +2,7 @@
 
 PhotocathodeSD::PhotocathodeSD(G4String name) : G4VSensitiveDetector(name)
 {
-  quEff = new G4PhysicsOrderedFreeVector();
+  quEff = new G4PhysicsOrderedFreeVector(false);
 
   std::ifstream datafile;
   datafile.open("efficiency.dat");
@@ -22,8 +22,6 @@ PhotocathodeSD::PhotocathodeSD(G4String name) : G4VSensitiveDetector(name)
   }
 
   datafile.close();
-
-  quEff->SetSpline(false);
 
 }
 

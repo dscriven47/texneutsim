@@ -7,7 +7,7 @@
 #include "G4THitsCollection.hh"
 #include "G4SDManager.hh"
 
-#include "g4root.hh"
+#include "G4AnalysisManager.hh"
 
 #include "run.hh"
 
